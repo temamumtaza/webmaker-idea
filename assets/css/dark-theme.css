@@ -525,24 +525,84 @@ footer {
     }
 
     /* 3. Forum Layout */
+    /* 3. Forum Layout */
     .forum-container {
-        display: block;
-        /* Stack everything */
+        display: flex;
+        flex-direction: column;
+        /* Stack vertically */
         padding: 1rem;
+        gap: 1.5rem;
     }
 
-    .sidebar-left,
-    .sidebar-right {
+    /* Fix "Sidebar Hilang": Restore them but optimize placement */
+    .sidebar-left {
+        display: block;
+        order: 1;
+        /* Show first (or second under nav) */
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    /* Transform Left Sidebar Menu to Horizontal Scroll Chips */
+    .sidebar-left .sidebar-menu {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 5px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        list-style: none;
+        /* Ensure no bullets */
+    }
+
+    .sidebar-left .sidebar-menu::-webkit-scrollbar {
         display: none;
-        /* Hide sidebars on mobile for focus */
     }
 
+    .sidebar-left .sidebar-menu li {
+        margin-bottom: 0;
+    }
+
+    .sidebar-left .sidebar-menu a {
+        background: #1a1a1a;
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid #333;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        width: max-content;
+        /* Ensure width fits content */
+    }
+
+    .sidebar-left .sidebar-title {
+        display: none;
+        /* Hide title to save space, or keep small */
+    }
+
+    /* Main Feed */
+    .feed-center {
+        order: 2;
+        width: 100%;
+    }
+
+    /* Fix "Gepeng": Ensure cards take full width */
+    .discussion-card,
     .new-thread-card {
+        width: 100%;
         margin-bottom: 1.5rem;
     }
 
-    .discussion-card {
-        margin-bottom: 1rem;
+    /* Right Sidebar (Members) */
+    .sidebar-right {
+        display: block;
+        order: 3;
+        /* Show last */
+        width: 100%;
+    }
+
+    .info-card {
+        margin-bottom: 1.5rem;
     }
 
     /* 4. Events Grid */
@@ -582,5 +642,197 @@ footer {
 
     .search-container {
         margin: 0 2rem;
+    }
+}
+/* --- MIGRATED FORUM STYLES --- */
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    color: #888;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-weight: 500;
+    gap: 12px;
+}
+
+.sidebar-menu a:hover, .sidebar-menu a.active {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.sidebar-title {
+    color: #555;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 2rem 0 1rem 1rem;
+    font-weight: 700;
+}
+
+/* Feed & Cards */
+.new-thread-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.new-thread-input {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.discussion-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+}
+
+.discussion-card:hover {
+    border-color: #333;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-meta h4 {
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.user-meta span {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.topic-badge {
+    background: #222;
+    color: #aaa;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.card-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.card-body p {
+    color: #999;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.input-response {
+    flex-grow: 1;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 0.8rem 1rem;
+    border-radius: 24px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-icon:hover {
+    color: #fff;
+}
+
+/* Info Cards */
+.info-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.leader-profile {
+    text-align: center;
+}
+
+.leader-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    border: 2px solid #333;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #222;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* DESKTOP LAYOUT (Restricted) */
+@media (min-width: 1025px) {
+    .forum-container {
+        display: grid;
+        grid-template-columns: 240px 1fr 280px; /* Left, Center, Right */
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
     }
 }
