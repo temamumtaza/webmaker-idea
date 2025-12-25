@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - Websitemaker.id</title>
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/dark-theme.css">
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        /* 3-Column Layout */
+        .forum-container {
+            display: grid;
+            grid-template-columns: 240px 1fr 280px;
+            /* Left, Center, Right */
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* --- LEFT SIDEBAR --- */
+        .sidebar-left {
+            /* Fixed position behavior could be added here if needed */
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            color: #888;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-weight: 500;
+            gap: 12px;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .sidebar-title {
+            color: #555;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 2rem 0 1rem 1rem;
+            font-weight: 700;
+        }
+
+        /* --- CENTER FEED --- */
+        .feed-center {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* "Add New Thread" Card */
+        .new-thread-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .new-thread-input {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 1rem;
+            border-radius: 8px;
+            color: #fff;
+            margin-top: 1rem;
+        }
+
+        /* Discussion Cards */
+        .discussion-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .discussion-card:hover {
+            border-color: #333;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-meta h4 {
+            font-size: 0.95rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .user-meta span {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Monochromatic Badge */
+        .topic-badge {
+            background: #222;
+            color: #aaa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .card-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .card-body p {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .input-response {
+            flex-grow: 1;
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 0.8rem 1rem;
+            border-radius: 24px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .btn-icon:hover {
+            color: #fff;
+        }
+
+        /* --- RIGHT SIDEBAR --- */
+        .sidebar-right {}
+
+        .info-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .leader-profile {
+            text-align: center;
+        }
+
+        .leader-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            border: 2px solid #333;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #222;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+        <div class="logo">
+            <img src="assets/images/logo-horizontal.png" alt="Websitemaker" style="height: 28px;">
+        </div>
+
+        <nav class="dashboard-nav">
+            <a href="dashboard.html">Course</a>
+            <a href="forum.html" class="active">Forum</a>
+            <a href="events.html">Events</a>
+        </nav>
+
+        <div class="search-container">
+            <div class="search-icon-wrapper">
+                <i data-feather="search" class="icon-sm"></i>
+            </div>
+            <input type="text" class="search-input" placeholder="Cari Topik...">
+        </div>
+
+        <div class="user-actions">
+            <a href="#" class="btn-upgrade">Upgrade ▾</a>
+            <div class="user-avatar">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                    alt="User" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+    </header>
+
+    <div class="forum-container">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar-left">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i data-feather="home" class="icon-sm"></i> Beranda Forum</a></li>
+                <li><a href="#"><i data-feather="message-circle" class="icon-sm"></i> Diskusi Saya</a></li>
+                <li><a href="#"><i data-feather="bookmark" class="icon-sm"></i> Disimpan</a></li>
+            </ul>
+
+            <div class="sidebar-title">Topik Populer</div>
+            <ul class="sidebar-menu">
+                <li><a href="#"><i data-feather="dollar-sign" class="icon-sm"></i> Negosiasi Klien</a></li>
+                <li><a href="#"><i data-feather="trending-up" class="icon-sm"></i> First 100 Million</a></li>
+                <li><a href="#"><i data-feather="tool" class="icon-sm"></i> Teknis Elementor</a></li>
+                <li><a href="#"><i data-feather="thumbs-up" class="icon-sm"></i> Review Portfolio</a></li>
+            </ul>
+        </aside>
+
+        <!-- CENTER FEED -->
+        <main class="feed-center">
+
+            <!-- Add Thread -->
+            <div class="new-thread-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="font-size: 1.1rem; font-weight: 600;">Mulai Diskusi Baru</h3>
+                    <button
+                        style="background: #9d4edd; color: white; border: none; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                        <i data-feather="plus" class="icon-sm"></i>
+                    </button>
+                </div>
+                <input type="text" class="new-thread-input" placeholder="Apa yang ingin kamu tanyakan hari ini?">
+            </div>
+
+            <!-- Thread 1 -->
+            <div class="discussion-card">
+                <div class="card-header">
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            class="user-avatar-sm" alt="Avatar">
+                        <div class="user-meta">
+                            <h4>Rizky Maulana</h4>
+                            <span>2 jam yang lalu</span>
+                        </div>
+                    </div>
+                    <span class="topic-badge"><i data-feather="dollar-sign"
+                            style="width: 12px; height: 12px; vertical-align: middle;"></i> Negosiasi Klien</span>
+                </div>
+                <div class="card-body">
+                    <h3>Gimana cara jawab klien yang bilang "Kok mahal banget mas?" 😅</h3>
+                    <p>Baru aja kirim quote 5jt untuk landing page UMKM, tapi klien langsung kaget. Padahal udah include
+                        hosting & domain setahun. Ada tips handling objection kayak gini buat pemula?</p>
+                </div>
+
+                <!-- TOP COMMENTS SECTION -->
+                <div
+                    style="background: #1a1a1a; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid #2a2a2a;">
+                    <div
+                        style="font-size: 0.8rem; color: #888; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700;">
+                        Jawaban Terbaik</div>
+
+                    <!-- Comment 1 -->
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            style="width: 24px; height: 24px; border-radius: 50%;" alt="User">
+                        <div>
+                            <span style="font-size: 0.9rem; color: #fff; font-weight: 600;">Budi Santoso</span>
+                            <p style="font-size: 0.9rem; color: #ccc; margin-top: 2px;">Jangan debatin harga, mas. Fokus
+                                jelasin value. Bilang aja "5jt itu investasi buat dapat sales 100jt". Biasanya mereka
+                                mikir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button class="btn-icon"><i data-feather="bookmark" class="icon-sm"></i></button>
+                    <input type="text" class="input-response" placeholder="Tulis balasan...">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <img src="assets/images/logo-horizontal.png"
+                            style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover; opacity: 0.5;">
+                        <span style="font-size: 0.8rem; color: #666;">+12</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thread 2 -->
+            <div class="discussion-card">
+                <div class="card-header">
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            class="user-avatar-sm" alt="Avatar">
+                        <div class="user-meta">
+                            <h4>Sarah Wijaya</h4>
+                            <span>5 jam yang lalu</span>
+                        </div>
+                    </div>
+                    <span class="topic-badge"><i data-feather="trending-up"
+                            style="width: 12px; height: 12px; vertical-align: middle;"></i> First 100 Million</span>
+                </div>
+                <div class="card-body">
+                    <h3>Akhirnya pecah telor! Project 10jt pertama dari LinkedIn 🚀</h3>
+                    <p>Setelah 3 bulan konsisten posting tentang edukasi website bisnis, akhirnya ada owner skincare
+                        yang DM. Deal di angka 10jt untuk Company Profile + 3 Landing Page produk. Jangan nyerah guys!
+                    </p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-icon"><i data-feather="bookmark" class="icon-sm"></i></button>
+                    <input type="text" class="input-response" placeholder="Ucapkan selamat...">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <span style="font-size: 0.8rem; color: #666;">45 Komentar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thread 3 -->
+            <div class="discussion-card">
+                <div class="card-header">
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            class="user-avatar-sm" alt="Avatar">
+                        <div class="user-meta">
+                            <h4>Budi Santoso</h4>
+                            <span>1 hari yang lalu</span>
+                        </div>
+                    </div>
+                    <span class="topic-badge"><i data-feather="tool"
+                            style="width: 12px; height: 12px; vertical-align: middle;"></i> Teknis Elementor</span>
+                </div>
+                <div class="card-body">
+                    <h3>Rekomendasi Hosting Murah tapi Kuat nahan Traffic Ads?</h3>
+                    <p>Klien mau run Facebook Ads budget 500rb/hari. Takut hosting shared yang biasa aku pake gak kuat.
+                        Ada saran provider lokal yang oke?</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-icon"><i data-feather="bookmark" class="icon-sm"></i></button>
+                    <input type="text" class="input-response" placeholder="Beri rekomendasi...">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <span style="font-size: 0.8rem; color: #666;">28 Balasan</span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar-right">
+            <div class="info-card">
+                <div class="leader-profile">
+                    <!-- Changed Avatar to something more "Contributor-like" -->
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                        class="leader-avatar" alt="Contributor">
+                    <h4 style="margin-bottom: 5px;">Andi Pratama</h4>
+                    <span
+                        style="color: #9d4edd; font-size: 0.85rem; background: rgba(157, 78, 221, 0.1); padding: 4px 10px; border-radius: 12px;">Top
+                        Contributor</span>
+                </div>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <div
+                        style="display: inline-flex; align-items: center; gap: 5px; background: #222; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; color: #fff;">
+                        <i data-feather="heart" style="width: 14px; height: 14px; color: #ff0844;"></i> 2.5k Kudos
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h4 style="margin-bottom: 1rem; color: #fff;">Member Online</h4>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Member 1 -->
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            style="width: 32px; height: 32px; border-radius: 50%;" alt="User">
+                        <span style="font-size: 0.9rem; color: #ccc;">Leslie Alexander</span>
+                    </div>
+                    <!-- Member 2 -->
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            style="width: 32px; height: 32px; border-radius: 50%;" alt="User">
+                        <span style="font-size: 0.9rem; color: #ccc;">Darlene Robertson</span>
+                    </div>
+                    <!-- Member 3 -->
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            style="width: 32px; height: 32px; border-radius: 50%;" alt="User">
+                        <span style="font-size: 0.9rem; color: #ccc;">Albert Flores</span>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <span>Total Member</span>
+                    <span style="color: #fff; font-weight: 700;">1,240</span>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>
