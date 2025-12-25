@@ -1,44 +1,39 @@
-# Website Maker Dashboard Idea
+# Website Maker Dashboard 🚀
 
-This project is a concept for an E-Learning Dashboard tailored for "Non-Tech Freelancers" who want to build websites. It features a modern, dark-themed UI with a focus on business and sales topics.
+![Status](https://img.shields.io/website?url=https%3A%2F%2Ftemamumtaza.github.io%2Fwebmaker-idea%2F&style=flat-square&label=Live%20Status)
+[![GitHub Pages](https://img.shields.io/badge/Demo-Live%20View-success?style=for-the-badge&logo=github)](https://temamumtaza.github.io/webmaker-idea/)
 
-## 🚀 How to Enable Live Website (GitHub Pages)
-
-If you see a **404 Error**, you need to enable GitHub Pages in your repository settings.
-
-### Step-by-Step Guide:
-
-1.  **Open Repository Settings**:
-    Go to: [https://github.com/temamumtaza/webmaker-idea/settings](https://github.com/temamumtaza/webmaker-idea/settings)
-
-2.  **Go to Pages**:
-    On the left sidebar, under the "Code and automation" section, click on **Pages**.
-
-3.  **Configure Source**:
-    - Under **Build and deployment**, find **Source**.
-    - Select **Deploy from a branch**.
-
-4.  **Select Branch**:
-    - Under **Branch**, select `main`.
-    - Ensure the folder is set to `/ (root)`.
-    - Click **Save**.
-
-5.  **Wait for Deployment**:
-    - GitHub will take 1-2 minutes to build your site.
-    - Refresh the page until the bar turns **Green**.
-    - Click **Visit site** at the top.
-
-## 📂 Project Structure
-
-- **`index.html`**: The main E-Learning Dashboard (formerly `dashboard.html`).
-- **`landing.html`**: The original Landing Page (formerly `index.html`).
-- **`forum.html`**: A 3-column forum page with interaction features.
-- **`events.html`**: An events listing page with sales-focused webinars.
-- **`assets/`**: Contains CSS, JS, and Images.
+A modern, dark-themed **E-Learning Dashboard** conceptualized for non-tech freelancers. This project demonstrates a responsive front-end implementation with a focus on user experience, community interaction, and event management.
 
 ## ✨ Key Features
 
-- **Dark Mode UI**: Sleek, professional design.
-- **Monochromatic Icons**: Uses Feather Icons for a clean look.
-- **Micro-Interactions**: Hover effects on cards and buttons.
-- **Freelancer Focus**: Content tailored for selling websites and scaling agencies.
+*   **💻 Responsive Dashboard**: A sleek, dark-mode interface optimized for both desktop and mobile devices.
+*   **📱 Mobile-First Design**: Fully responsive layout with stacked navigation, scrollable menus, and adaptive grids for smaller screens.
+*   **💬 Interactive Forum**: A community hub featuring:
+    *   "Best Answer" highlighting.
+    *   Horizontal scrollable topic filters (Mobile chips).
+    *   Clean, card-based discussion threads.
+*   **📅 Event Management**: Dedicated section for webinars and workshops with a business-focus.
+*   **🎨 Custom UI**: Built with a bespoke `dark-theme.css`, featuring glassmorphism accents and minimalist Feather Icons.
+
+## 🛠️ Tech Stack
+
+*   **HTML5 & CSS3** (Custom Variables, Flexbox/Grid)
+*   **JavaScript** (Interactions)
+*   **Feather Icons** (SVG Icons)
+*   **Google Fonts** (Inter)
+
+## 🚀 Quick Start
+
+Visit the live demo here: **[Open Website Maker Dashboard](https://temamumtaza.github.io/webmaker-idea/)**
+
+## 📂 Project Structure
+
+*   `index.html` - Main Dashboard (Learning Center)
+*   `forum.html` - Community Forum
+*   `events.html` - Events & Webinars
+*   `landing.html` - Landing/Sales Page
+*   `assets/` - Styles, Scripts, and Images
+
+---
+Made with ❤️ by [Tema Mumtaza](https://github.com/temamumtaza)
