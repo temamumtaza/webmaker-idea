@@ -455,3 +455,132 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+/* --- MOBILE OPTIMIZATION --- */
+
+@media (max-width: 768px) {
+
+    /* 1. Navbar Optimization */
+    .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        position: relative;
+    }
+
+    .logo {
+        align-self: flex-start;
+    }
+
+    .search-container {
+        width: 100%;
+        margin: 0;
+        max-width: none;
+        order: 3;
+        /* Move search to bottom of header */
+    }
+
+    .dashboard-nav {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 0.5rem;
+        margin-right: 0;
+        gap: 1.5rem;
+        order: 4;
+        /* Below search */
+        border-top: 1px solid #222;
+        padding-top: 1rem;
+        margin-top: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll iOS */
+    }
+
+    .dashboard-nav::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar */
+    }
+
+    .user-actions {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .btn-upgrade {
+        display: none;
+        /* Hide upgrade button on small screens to save space */
+    }
+
+    /* 2. Dashboard Grid */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        /* Single column */
+        padding: 1rem;
+    }
+
+    .dash-img {
+        height: 160px;
+        /* Smaller images */
+    }
+
+    /* 3. Forum Layout */
+    .forum-container {
+        display: block;
+        /* Stack everything */
+        padding: 1rem;
+    }
+
+    .sidebar-left,
+    .sidebar-right {
+        display: none;
+        /* Hide sidebars on mobile for focus */
+    }
+
+    .new-thread-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .discussion-card {
+        margin-bottom: 1rem;
+    }
+
+    /* 4. Events Grid */
+    .events-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .event-card {
+        flex-direction: column;
+    }
+
+    .event-image {
+        width: 100%;
+        height: 180px;
+    }
+
+    .event-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .forum-container {
+        grid-template-columns: 200px 1fr;
+        /* Hide right sidebar */
+    }
+
+    .sidebar-right {
+        display: none;
+    }
+
+    .dashboard-header {
+        padding: 1rem 2rem;
+    }
+
+    .search-container {
+        margin: 0 2rem;
+    }
+}
